@@ -18,10 +18,12 @@ const __dirname = path.resolve()
 
 // This is what we call a middleware(   )
 // One thing to remember is that the order of the middleware is very much compulsory!
-if(process.env.NODE_ENV !== 'development'){
-    app.use(cors({
-        origin: "http://localhost:5173",
-    }))
+if(process.env.NODE_ENV !== 'production'){
+    app.use(
+        cors({
+            origin: "http://localhost:5173",
+        })
+    )
 }
 app.use(express.json()); //It will parse the JSON bodies: req.body
 app.use(rateLimiter)
